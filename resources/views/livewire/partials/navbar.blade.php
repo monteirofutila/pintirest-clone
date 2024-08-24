@@ -2,12 +2,12 @@
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="https://flowbite.com/" class="flex w-auto items-center space-x-3 rtl:space-x-reverse">
-                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                {{-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" /> --}}
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Pintirest</span>
             </a>
-            <div class="flex md:order-1">
-                <div class="relative hidden md:block">
+            <div class="w-full max-w-sm lg:max-w-xl xl:max-w-3xl 2xl:max-w-5xl flex items-center hidden md:block">
+                <div class="relative w-full">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -17,11 +17,11 @@
                         <span class="sr-only">Search icon</span>
                     </div>
                     <input type="text" id="search-navbar"
-                        class="block w-full py-3 px-4 ps-8 text-medium text-gray-700 placeholder-gray-500 bg-gray-100 border-0 rounded-full"
+                        class="block w-full py-3 px-4 ps-10 text-medium text-gray-700 placeholder-gray-500 bg-gray-100 border-0 rounded-full"
                         placeholder="Procura por refeições fáceis, moda, etc.">
                 </div>
             </div>
-            <div class="w-auto items-center justify-betwee md:flex md:order-2">
+            <div class="items-center justify-betwee md:flex">
                 <ul class="flex flex-row space-x-2">
                     <li>
                         <a href="#"
