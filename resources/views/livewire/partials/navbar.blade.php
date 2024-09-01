@@ -4,7 +4,7 @@
         <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 {{-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" /> --}}
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Pintirest</span>
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Pinterest</span>
             </a>
             <div class="w-full max-w-sm lg:max-w-xl xl:max-w-3xl 2xl:max-w-5xl flex items-center hidden md:block">
                 <div class="relative w-full">
