@@ -8,26 +8,32 @@
             <div class="w-full max-w-xs flex flex-wrap items-center justify-between mx-auto">
                 <div class="w-full flex flex-col items-center justify-center w-full space-y-5 mt-7">
                     <div class="w-full">
-                        <label for="title" class="block mb-2 ps-2 text-sm text-gray-900 dark:text-white">E-mail</label>
-                        <input type="email" id="title"
+                        <label for="email" class="block mb-2 ps-2 text-sm text-gray-900 dark:text-white">E-mail</label>
+                        <input type="email" id="email" wire:model="email"
                             class="bg-white py-3 px-4 border-2 border-gray-300 text-gray-700 text-medium placeholder-gray-500 rounded-2xl w-full"
                             placeholder="E-mail" />
+                        @error('email')
+                            <span class="error text-sm text-red-600">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="w-full">
-                        <label for="link"
+                        <label for="password"
                             class="block mb-2 ps-2 text-sm text-gray-900 dark:text-white">Palavra-passe</label>
-                        <input type="password" id="link"
+                        <input type="password" id="password" wire:model="password"
                             class="bg-white py-3 px-4 border-2 border-gray-300 text-gray-700 text-medium placeholder-gray-500 rounded-2xl w-full"
                             placeholder="Palavra-passe" />
+                        @error('password')
+                            <span class="error text-sm text-red-600">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="w-full">
-                        <buttom
+                        <buttom wire:click="authenticate"
                             class="block py-2 px-4 text-center font-medium text-white bg-red-600 hover:bg-red-700 rounded-full">
                             Iniciar sessão</buttom>
                     </div>
                     <div class="w-full">
                         <p class="text-center">
-                            <a href="#"
+                            <a href="{{ route('register') }}"
                                 class="undefined text-xs font-medium text-gray-900 dark:text-gray-500">Ainda
                                 não
                                 estás no

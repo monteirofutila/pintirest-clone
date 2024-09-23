@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Services;
-use App\Data\StoreUserDTOData;
+use App\Data\Users\StoreUserDTOData;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 
 class UserService
 {
@@ -11,6 +10,6 @@ class UserService
     {
         $user = User::create($dto->toArray());
 
-        Auth::login($user);
+        auth()->login($user);
     }
 }

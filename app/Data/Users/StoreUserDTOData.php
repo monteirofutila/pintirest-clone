@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Data;
+namespace App\Data\Users;
 
 use Spatie\LaravelData\Data;
 
-readonly class StoreUserDTOData extends Data
+class StoreUserDTOData extends Data
 {
   public function __construct(
     public string $name,

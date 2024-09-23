@@ -24,12 +24,12 @@
             <div class="items-center justify-betwee md:flex">
                 <ul class="flex flex-row space-x-2">
                     <li>
-                        <a href="#"
+                        <a href="{{ route('login') }}"
                             class="block py-3 px-4 font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-full">Iniciar
                             sessão</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('register') }}"
                             class="block py-3 px-4 font-medium text-white bg-red-600 hover:bg-red-700 rounded-full">Inscreve-te</a>
                     </li>
                 </ul>
