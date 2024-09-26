@@ -10,7 +10,10 @@
 
 <body>
     <livewire:partials.navbar />
+
     {{ $slot }}
+
+    @stack('js')
 </body>
 
 </html>

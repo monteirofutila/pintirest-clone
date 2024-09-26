@@ -9,6 +9,8 @@ use Livewire\Component;
 
 class Register extends Component
 {
+    protected UserService $userService;
+
     #[Validate('required')]
     public $name;
 
@@ -32,7 +34,9 @@ class Register extends Component
 
         $dto = StoreUserDTOData::from($this->all());
 
-        $this->userService->new($dto);
+        $user = $this->userService->new($dto);
+
+        auth()->login($user);
 
         session()->regenerate();
 

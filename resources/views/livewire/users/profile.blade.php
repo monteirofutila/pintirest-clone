@@ -5,10 +5,11 @@
             <div class="w-full flex flex-col items-center justify-between gap-10">
                 <div class="w-full flex flex-col gap-2 items-center justify-center">
                     <img src="http://placehold.it/100x100" class="rounded-full size-32 object-cover">
-                    <h2 class="text-4xl font-medium text-gray-900">Jonker Ahmed</h2>
-                    <a class="text-sm text-gray-500" href="#" wire:navigate="">@jonkerahmed</a>
+                    <h2 class="text-4xl font-medium text-gray-900">{{ $user->name }}</h2>
+                    <a class="text-sm text-gray-500" href="{{ route('profile', ['username' => $user->username]) }}"
+                        wire:navigate>{{ '@' . $user->username }}</a>
                     <div class="w-full flex items-center justify-center mt-2">
-                        <a href="#"
+                        <a href="{{ route('settings') }}"
                             class="block py-3 px-4 font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-full">Editar
                             perfil</a>
                     </div>
