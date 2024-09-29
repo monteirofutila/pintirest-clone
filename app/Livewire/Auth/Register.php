@@ -41,7 +41,8 @@ class Register extends Component
         session()->regenerate();
 
         $this->reset();
-        $this->redirectRoute('profile');
+
+        $this->redirectRoute('profile', $user->username);
     }
 
     public function render()

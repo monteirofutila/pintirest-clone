@@ -94,8 +94,8 @@
                 </div>
                 <div
                     class="w-full bg-white fixed inset-x-0 bottom-0 flex items-center justify-center gap-2 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] shadow p-4">
-                    <a href="#"
-                        class="block py-3 px-4 font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-full">Repor</a>
+                    <button type="submit" wire:click="refresh"
+                        class="block py-3 px-4 font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-full">Repor</button>
                     <button type="submit" wire:click="edit"
                         class="block py-3 px-4 font-medium text-white bg-red-600 hover:bg-red-700 rounded-full">Guardar</button>
                 </div>

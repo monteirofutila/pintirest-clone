@@ -50,6 +50,8 @@ class Settings extends Component
         $this->userService->update($dto, $this->user);
         $this->userService->updateAvatar($this->file, $this->user);
 
+        $this->reset();
+
         $this->redirectRoute(name: 'settings', navigate: true);
     }
 

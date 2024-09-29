@@ -5,7 +5,7 @@ use App\Data\Users\StoreUserDTOData;
 use App\Data\Users\UpdateUserDTOData;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 
 class UserService
 {

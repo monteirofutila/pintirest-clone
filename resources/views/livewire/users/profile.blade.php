@@ -4,14 +4,17 @@
         <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
             <div class="w-full flex flex-col items-center justify-between gap-10">
                 <div class="w-full flex flex-col gap-2 items-center justify-center">
-                    <img src="http://placehold.it/100x100" class="rounded-full size-32 object-cover">
+                    <img src="{{ $user->avatar ? asset('storage/' . $user->avatar) : 'http://placehold.it/100x100' }}"
+                        class="rounded-full size-32 object-cover">
                     <h2 class="text-4xl font-medium text-gray-900">{{ $user->name }}</h2>
                     <a class="text-sm text-gray-500" href="{{ route('profile', ['username' => $user->username]) }}"
                         wire:navigate>{{ '@' . $user->username }}</a>
                     <div class="w-full flex items-center justify-center mt-2">
-                        <a href="{{ route('settings') }}"
-                            class="block py-3 px-4 font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-full">Editar
-                            perfil</a>
+                        @auth
+                            <a href="{{ route('settings') }}"
+                                class="block py-3 px-4 font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-full">Editar
+                                perfil</a>
+                        @endauth
                     </div>
                 </div>
                 <div class="w-full flex items-center justify-center">

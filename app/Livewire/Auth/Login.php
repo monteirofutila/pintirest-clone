@@ -36,6 +36,7 @@ class Login extends Component
         session()->regenerate();
 
         $this->reset();
+
         $this->redirectRoute('home');
     }
 
