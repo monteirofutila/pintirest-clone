@@ -49,7 +49,7 @@ class Create extends Component
 
         $this->pinService->new($dto, $this->file);
 
-        $this->reset()->except('user');
+        $this->reset(['title', 'description', 'link', 'file']);
 
         $this->redirectRoute('profile', $this->user->username);
     }

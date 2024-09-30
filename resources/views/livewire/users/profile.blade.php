@@ -10,11 +10,11 @@
                     <a class="text-sm text-gray-500" href="{{ route('profile', ['username' => $user->username]) }}"
                         wire:navigate>{{ '@' . $user->username }}</a>
                     <div class="w-full flex items-center justify-center mt-2">
-                        @auth
-                            <a href="{{ route('settings') }}"
+                        @if ($user->is(auth()->user()))
+                            <a href="{{ route('settings') }}" wire:navigate
                                 class="block py-3 px-4 font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-full">Editar
                                 perfil</a>
-                        @endauth
+                        @endif
                     </div>
                 </div>
                 <div class="w-full flex items-center justify-center">
@@ -29,16 +29,18 @@
                         </li>
                     </ul>
                 </div>
-                <div class="w-full flex flex-col items-center justify-center">
-                    <p class="text-center text-gray-900">Ainda não há nada para apresentar! Poderás encontrar aqui todos
-                        os Pins que
-                        criares.</p>
-                    <div class="mt-4">
-                        <a href="#"
-                            class="block py-3 px-4 font-medium text-white bg-red-600 hover:bg-red-700 rounded-full">Criar
-                            Pin</a>
+                @if ($user->is(auth()->user()))
+                    <div class="w-full flex flex-col items-center justify-center">
+                        <p class="text-center text-gray-900">Ainda não há nada para apresentar! Poderás encontrar aqui todos
+                            os Pins que
+                            criares.</p>
+                        <div class="mt-4">
+                            <a href="{{route('posts.create')}}" wire:navigate
+                                class="block py-3 px-4 font-medium text-white bg-red-600 hover:bg-red-700 rounded-full">Criar
+                                Pin</a>
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Pin extends Model
 {
@@ -14,6 +15,11 @@ class Pin extends Model
         'title',
         'description',
         'link',
-        'image_url',
+        'image_path',
     ];
+
+    public function getImageUrlAttribute(): string
+    {
+        return Storage::disk('public')->url($this->image_path);
+    }
 }

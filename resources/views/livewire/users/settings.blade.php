@@ -25,8 +25,7 @@
                                         <img src="{{ $file->temporaryUrl() }}"
                                             class="rounded-full size-24 object-cover">
                                     @else
-                                        <img src="{{ $user->avatar ? asset('storage/' . $user->avatar) : 'http://placehold.it/100x100' }}"
-                                            class="rounded-full size-24 object-cover">
+                                        <img src="{{ $user->avatar_url }}" class="rounded-full size-24 object-cover">
                                     @endif
                                     <button type="submit" wire:click="$dispatch('image-preview')"
                                         class="block py-3 px-4 font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-full">

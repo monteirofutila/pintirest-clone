@@ -56,7 +56,7 @@
                     </div>
                     <div class="w-full">
                         <p class="text-center">
-                            <a href="{{ route('login') }}"
+                            <a href="{{ route('login') }}" wire:navigate
                                 class="undefined text-xs font-medium text-gray-900 dark:text-gray-500">Ja
                                 és membro? Iniciar sessão
                             </a>

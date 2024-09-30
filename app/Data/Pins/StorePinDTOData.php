@@ -11,7 +11,7 @@ class StorePinDTOData extends Data
     public string $title,
     public ?string $description = null,
     public ?string $link = null,
-    public ?string $image_url = null,
+    public ?string $image_path = null,
   ) {
   }
 }

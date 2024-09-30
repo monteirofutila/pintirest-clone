@@ -11,8 +11,13 @@ class PinService
     {
         $path = $file->store('pins', 'public');
 
-        $dto->image_url = $path;
+        $dto->image_path = $path;
 
         return Pin::create($dto->toArray());
+    }
+
+    public function findAll(): ?object
+    {
+        return Pin::all();
     }
 }

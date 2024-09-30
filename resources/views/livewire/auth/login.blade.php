@@ -27,13 +27,13 @@
                         @enderror
                     </div>
                     <div class="w-full">
-                        <buttom wire:click="authenticate"
+                        <button wire:click="authenticate"
                             class="block py-2 px-4 text-center font-medium text-white bg-red-600 hover:bg-red-700 rounded-full">
-                            Iniciar sessão</buttom>
+                            Iniciar sessão</button>
                     </div>
                     <div class="w-full">
                         <p class="text-center">
-                            <a href="{{ route('register') }}"
+                            <a href="{{ route('register') }}" wire:navigate
                                 class="undefined text-xs font-medium text-gray-900 dark:text-gray-500">Ainda
                                 não
                                 estás no
