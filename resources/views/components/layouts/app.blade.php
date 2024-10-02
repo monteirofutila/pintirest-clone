@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <livewire:partials.navbar />
+    @include('components.layouts.navigation')
 
     {{ $slot }}
 

@@ -27,7 +27,7 @@ class Settings extends Component
 
     public $website;
 
-    public $file;
+    public $file = null;
 
     public function boot(UserService $userService)
     {
@@ -47,7 +47,9 @@ class Settings extends Component
         $dto = UpdateUserDTOData::from($this->except('file'));
 
         $this->userService->update($dto, $this->user);
-        $this->userService->updateAvatar($this->file, $this->user);
+        if ($this->file) {
+            $this->userService->updateAvatar($this->file, $this->user);
+        }
 
         $this->reset();
 

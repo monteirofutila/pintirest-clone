@@ -1,5 +1,5 @@
 <div>
-    {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
+    <!-- Always remember that you are absolutely unique. Just like everyone else. - Margaret Mead -->
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
             <div class="items-center justify-betwee md:flex">
@@ -43,34 +43,40 @@
                             <img class="rounded-full size-10 object-cover" src="{{ auth()->user()->avatar_url }}"
                                 alt="{{ auth()->user()->name }}">
                         </a>
-                        <button id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
-                            data-dropdown-placement="bottom"
-                            class="flex text-gray-700 hover:bg-gray-100 size-8 font-medium rounded-full text-sm items-center justify-center"
-                            type="button"><svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m1 1 4 4 4-4" />
-                            </svg>
-                        </button>
-                        <!-- Dropdown menu -->
-                        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
-                            id="user-dropdown">
-                            <div class="px-4 py-3">
-                                <span class="block text-sm text-gray-900 dark:text-white">{{ auth()->user()->name }}</span>
-                                <span
-                                    class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{ auth()->user()->email }}</span>
+                        <div x-data="{ open: false }" class="inline-flex relative">
+                            <button @click="open = ! open"
+                                class="flex text-gray-700 hover:bg-gray-100 size-8 font-medium rounded-full text-sm items-center justify-center"
+                                type="button"><svg class="w-2.5 h-2.5" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg>
+                            </button>
+                            <!-- Dropdown menu -->
+                            <div x-show="open"
+                                class="absolute top-12 right-0 p-2 flex w-full min-w-[18rem] flex-col overflow-hidden bg-white rounded-lg shadow-md">
+                                <div class="flex w-full items-center jutify-between gap-3 p-2 bg-gray-100 rounded-lg">
+                                    <img src="{{ auth()->user()->avatar_url }}" class="rounded-full size-14 object-cover">
+                                    <div class="items-center jutify-between">
+                                        <span
+                                            class="block font-medium text-base text-gray-700 dark:text-white">{{ auth()->user()->name }}</span>
+                                        <span
+                                            class="block text-sm text-gray-500 dark:text-gray-400">{{ auth()->user()->email }}</span>
+                                    </div>
+                                </div>
+                                <ul class="flex flex-col w-full py-2">
+                                    <li>
+                                        <a href="{{ route('settings') }}" wire:navigate
+                                            class="block font-medium text-base px-2 py-2 text-gray-700 rounded-lg hover:bg-gray-100">Definições</a>
+                                    </li>
+                                    <form action="{{ route('logout') }}" method="post" class="w-full">
+                                        @csrf
+                                        <button type="submit"
+                                            class="block w-full text-left font-medium text-base px-2 py-2 text-gray-700 rounded-lg hover:bg-gray-100">Terminar
+                                            sessão</button>
+                                    </form>
+                                </ul>
                             </div>
-                            <ul class="py-2" aria-labelledby="user-menu-button">
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Definições</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Terminar
-                                        sessão</a>
-                                </li>
-                            </ul>
                         </div>
                     </ul>
                 @else
