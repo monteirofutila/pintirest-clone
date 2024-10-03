@@ -4,8 +4,7 @@
         <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
             <div class="w-full flex flex-col items-center justify-between gap-7">
                 <div class="w-full flex flex-col gap-2 items-center justify-center">
-                    <img src="{{ $user->avatar ? asset('storage/' . $user->avatar) : 'http://placehold.it/100x100' }}"
-                        class="rounded-full size-32 object-cover">
+                    <img src="{{ $user->avatar_url }}" class="rounded-full size-32 object-cover">
                     <h2 class="text-4xl font-medium text-gray-900">{{ $user->name }}</h2>
                     <a class="text-sm text-gray-500" href="{{ route('profile', ['username' => $user->username]) }}"
                         wire:navigate>{{ '@' . $user->username }}</a>
@@ -58,7 +57,7 @@
                                             <div class="relative overflow-hidden border border-gray-100 rounded-3xl group">
                                                 <a href="#">
                                                     <img class="w-full h-auto object-cover rounded-3xl"
-                                                        src="{{ $pin->image_url }}" alt="" />
+                                                        src="{{ $pin->image_url }}" alt="{{ $pin->title }}" />
                                                 </a>
                                                 <div
                                                     class="absolute inset-0 hover:bg-transparent transition duration-300 hover:bg-gray-900 hover:opacity-25 rounded-3xl">
@@ -80,13 +79,42 @@
                         </div>
                         <div x-show="selected_tab === 'saved'" id="tabpanel_saved" role="tabpanel" aria-label="saved"
                             class="w-full items-center justify-between">
-                            <div class="w-full flex flex-col items-center justify-center">
-                                <p class="text-center text-gray-900">Ainda não há nada para apresentar! Poderás
-                                    encontrar aqui
-                                    todos
-                                    os Pins que
-                                    guardares.</p>
-                            </div>
+                            @empty($bookmarks)
+                                <div class="w-full flex flex-col items-center justify-center">
+                                    <p class="text-center text-gray-900">Ainda não há nada para apresentar! Poderás
+                                        encontrar aqui
+                                        todos
+                                        os Pins que
+                                        guardares.</p>
+                                </div>
+                            @else
+                                <div
+                                    class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 2xl:columns-6 gap-4 space-y-4">
+                                    @foreach ($bookmarks as $bookmark)
+                                        <div>
+                                            <div class="relative overflow-hidden border border-gray-100 rounded-3xl group">
+                                                <a href="#">
+                                                    <img class="w-full h-auto object-cover rounded-3xl"
+                                                        src="{{ $bookmark->pin->image_url }}"
+                                                        alt="{{ $bookmark->pin->title }}" />
+                                                </a>
+                                                <div
+                                                    class="absolute inset-0 hover:bg-transparent transition duration-300 hover:bg-gray-900 hover:opacity-25 rounded-3xl">
+                                                </div>
+                                                <div
+                                                    class="absolute inset-0 flex flex-col justify-between p-5 opacity-0 group-hover:opacity-100 transition duration-300">
+                                                    <div class="flex justify-end">
+                                                        <a href="#"
+                                                            class="inline-flex items-center px-3 py-3 font-medium text-center text-white bg-red-600 rounded-full">
+                                                            Guardar
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endempty
                         </div>
                     </div>
                 </div>

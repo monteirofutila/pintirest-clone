@@ -26,4 +26,9 @@ class PinService
     {
         return $user->pins;
     }
+
+    public function getSavedByUser(User $user): ?object
+    {
+        return $user->bookmarks->with('pins')?->pins;
+    }
 }

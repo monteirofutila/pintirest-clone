@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Pin;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -11,13 +12,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('pins', function (Blueprint $table) {
-            $table->uuid();
+        Schema::create('bookmarks', function (Blueprint $table) {
+            $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->string('title');
-            $table->string('description')->nullable();
-            $table->string('link')->nullable();
-            $table->string('image_path');
+            $table->foreignIdFor(Pin::class)->constrained()->cascadeOnDelete();
+            $table->unique(['user_id', 'question_id']);
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('pins');
+        Schema::dropIfExists('bookmarks');
     }
 };
