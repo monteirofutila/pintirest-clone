@@ -3,6 +3,7 @@
 namespace App\Services;
 use App\Data\Pins\StorePinDTOData;
 use App\Models\Pin;
+use App\Models\User;
 use Illuminate\Http\UploadedFile;
 
 class PinService
@@ -19,5 +20,10 @@ class PinService
     public function findAll(): ?object
     {
         return Pin::all();
+    }
+
+    public function getByUser(User $user): ?object
+    {
+        return $user->pins;
     }
 }

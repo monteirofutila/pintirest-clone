@@ -2,24 +2,30 @@
     <!-- Always remember that you are absolutely unique. Just like everyone else. - Margaret Mead -->
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <div class="items-center justify-betwee md:flex">
-                <ul class="flex flex-row items-center justify-betwee space-x-10">
+            <div class="items-center justify-between md:flex">
+                <ul class="w-full flex flex-row gap-10 items-center justify-between">
                     <li>
-                        <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
-                            <span
-                                class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Pinterest</span>
+                        <a href="{{ route('home') }}" class="self-cente r text-2xl font-semibold dark:text-white">
+                            Pinterest
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('home') }}" wire:navigate class="block font-medium text-gray-900">Início</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('posts.create') }}" wire:navigate
-                            class="block font-medium text-gray-900">Criar</a>
-                    </li>
+                    @auth
+                        <li>
+                            <a href="{{ route('home') }}" wire:navigate class="block font-medium text-gray-900">Início</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('posts.create') }}" wire:navigate
+                                class="block font-medium text-gray-900">Criar</a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="{{ route('home') }}" wire:navigate class="block font-medium text-gray-900">Explorar</a>
+                        </li>
+                    @endauth
                 </ul>
             </div>
-            <div class="w-full max-w-sm lg:max-w-xl xl:max-w-3xl 2xl:max-w-5xl flex items-center hidden md:block">
+            <div
+                class="w-full max-w-sm md:max-w-md lg:max-w-xl xl:max-w-3xl 2xl:max-w-5xl flex items-center hidden md:block">
                 <div class="relative w-full">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -34,7 +40,7 @@
                         placeholder="Procura por refeições fáceis, moda, etc.">
                 </div>
             </div>
-            <div class="items-center justify-betwee md:flex">
+            <div class="items-center justify-between md:flex">
                 @auth
                     <ul class="flex flex-row space-x-2 items-center justify-center">
                         <a href="{{ route('profile', auth()->user()->username) }}" wire:navigate

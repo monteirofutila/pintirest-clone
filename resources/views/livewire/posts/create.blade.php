@@ -9,9 +9,9 @@
             </div>
             <div class="w-full max-w-screen-lg flex flex-col sm:flex-row gap-14 mx-auto p-4">
                 <div class="flex flex-[0.5] justify-center">
-                    <label for="uploadInput"
+                    <label x-data="imgPreview" for="upload"
                         class="flex flex-col items-center justify-center w-full h-96 border-2 border-gray-300 border-dashed rounded-2xl cursor-pointer bg-gray-100 dark:hover:bg-gray-800 dark:bg-gray-700 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                        <div class="flex flex-col items-center justify-center pt-5 pb-6 px-4">
+                        <div x-show="!imgsrc" class="flex flex-col items-center justify-center pt-5 pb-6 px-4">
                             <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -24,11 +24,14 @@
                                 ou arrasta-o e
                                 larga-o aqui</p>
                         </div>
-                        <input id="uploadInput" wire:model="file" type="file" class="hidden" accept="image/*" />
-                        @error('file')
-                            <span class="error text-sm text-red-600">{{ $message }}</span>
-                        @enderror
+                        <img x-show="imgsrc" :src="imgsrc" class="w-full h-full object-cover rounded-2xl"
+                            alt="">
+                        <input @change="previewFile" x-ref="myFile" id="upload" wire:model="file" type="file"
+                            class="hidden" accept="image/*" />
                     </label>
+                    @error('file')
+                        <span class="error text-sm text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="flex flex-1 justify-center">
@@ -82,3 +85,23 @@
         </div>
     </div>
 </div>
+
+@script
+    <script>
+        Alpine.data('imgPreview', () => ({
+            imgsrc: null,
+            previewFile() {
+                let file = this.$refs.myFile.files[0];
+                if (!file || file.type.indexOf('image/') === -1) return;
+                this.imgsrc = null;
+                let reader = new FileReader();
+
+                reader.onload = e => {
+                    this.imgsrc = e.target.result;
+                }
+
+                reader.readAsDataURL(file);
+            }
+        }))
+    </script>
+@endscript
