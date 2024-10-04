@@ -60,7 +60,7 @@
                             </button>
                             <!-- Dropdown menu -->
                             <div x-show="open"
-                                class="absolute top-12 right-0 p-2 flex w-full min-w-[18rem] flex-col overflow-hidden bg-white rounded-lg shadow-md">
+                                class="absolute z-50 top-12 right-0 p-2 flex w-full min-w-[18rem] flex-col overflow-hidden bg-white rounded-lg shadow-md">
                                 <div class="flex w-full items-center jutify-between gap-3 p-2 bg-gray-100 rounded-lg">
                                     <img src="{{ auth()->user()->avatar_url }}" class="rounded-full size-14 object-cover">
                                     <div class="items-center jutify-between">

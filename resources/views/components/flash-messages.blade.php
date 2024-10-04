@@ -12,7 +12,8 @@
     <div id="notificationWrapper" class="z-50 fixed w-max left-0 right-0 bottom-10 mx-auto space-y-2"></div>
 
     <template id="notificationAlert">
-        <div role="alert" class="animate-slideUp text-white font-medium bg-gray-950 px-4 py-3 rounded-lg">
+        <div role="alert"
+            class="animate-fade-up animate-once animate-duration-200 animate-fill-forwards text-white font-medium bg-gray-950 px-4 py-3 rounded-lg">
             {notificationText}
         </div>
     </template>
