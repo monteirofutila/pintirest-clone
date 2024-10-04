@@ -19,12 +19,12 @@ class PinService
 
     public function findAll(): ?object
     {
-        return Pin::all();
+        return Pin::orderByDesc('created_at')->get();
     }
 
     public function getByUser(User $user): ?object
     {
-        return $user->pins;
+        return Pin::where('user_id', $user->id)->orderByDesc('created_at')->get();
     }
 
     public function getSavedByUser(User $user): ?object

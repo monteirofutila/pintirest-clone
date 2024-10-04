@@ -30,6 +30,7 @@ class Login extends Component
         $login = $this->authService->login($dto);
 
         if (!$login) {
+            $this->dispatch('flash.message', message: 'E-mail ou palavra-passe errado(a)');
             return;
         }
 
