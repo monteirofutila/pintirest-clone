@@ -16,7 +16,7 @@
                             <div
                                 class="absolute inset-0 flex flex-col justify-between p-5 opacity-0 group-hover:opacity-100 transition duration-300">
                                 <div class="flex justify-end">
-                                    <a href="#"
+                                    <a href="#" @click="$dispatch('flash.message', {  message: 'Link created.' })"
                                         class="inline-flex items-center px-3 py-3 font-medium text-center text-white bg-red-600 rounded-full">
                                         Guardar
                                     </a>
